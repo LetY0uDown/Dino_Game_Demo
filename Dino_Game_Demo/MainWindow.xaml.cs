@@ -27,10 +27,10 @@ namespace Dino_Game_Demo
             GameField.Children.Add(character.Body);
             GameField.Children.Add(enemy.Body);
 
-            Canvas.SetBottom(character.Body, GAME_OBJECT_HEIGHT);
+            Canvas.SetBottom(character.Body, GAME_FIELD_HEIGHT);
             Canvas.SetLeft(character.Body, CHARACTER_POS);
 
-            Canvas.SetBottom(enemy.Body, GAME_OBJECT_HEIGHT);
+            Canvas.SetBottom(enemy.Body, GAME_FIELD_HEIGHT);
             Canvas.SetLeft(enemy.Body, ENEMY_START_POS);
 
             DrawRocks();
@@ -41,7 +41,7 @@ namespace Dino_Game_Demo
         }
 
         private const int ENEMY_START_POS = 780;
-        private const int GAME_OBJECT_HEIGHT = 162;
+        private const int GAME_FIELD_HEIGHT = 162;
 
         private const int CHARACTER_POS = 50;
 
@@ -65,7 +65,7 @@ namespace Dino_Game_Demo
             Position = new()
             {
                 X = ENEMY_START_POS,
-                Y = GAME_OBJECT_HEIGHT
+                Y = GAME_FIELD_HEIGHT
             }
         };
         private Entity character = new()
@@ -79,7 +79,7 @@ namespace Dino_Game_Demo
             Position = new()
             {
                 X = CHARACTER_POS,
-                Y = GAME_OBJECT_HEIGHT
+                Y = GAME_FIELD_HEIGHT
             }
         };
 
@@ -130,13 +130,13 @@ namespace Dino_Game_Demo
                 Position = new()
                 {
                     X = ENEMY_START_POS,
-                    Y = GAME_OBJECT_HEIGHT
+                    Y = GAME_FIELD_HEIGHT
                 }
             });
 
             GameField.Children.Add(enemies[^1].Body);
 
-            Canvas.SetBottom(enemies[^1].Body, GAME_OBJECT_HEIGHT);
+            Canvas.SetBottom(enemies[^1].Body, GAME_FIELD_HEIGHT);
             Canvas.SetLeft(enemies[^1].Body, ENEMY_START_POS);
         }
         private void RemoveEnemy(Entity enemy)
@@ -160,15 +160,15 @@ namespace Dino_Game_Demo
 
         private void JumpTimer_Tick(object? sender, EventArgs e)
         {            
-            character.Position.Y = GAME_OBJECT_HEIGHT;
-            Canvas.SetBottom(character.Body, GAME_OBJECT_HEIGHT);
+            character.Position.Y = GAME_FIELD_HEIGHT;
+            Canvas.SetBottom(character.Body, GAME_FIELD_HEIGHT);
 
             jumpTimer.Stop();
         }
 
         private void Window_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Space && character.Position.Y == GAME_OBJECT_HEIGHT)
+            if (e.Key == Key.Space && character.Position.Y == GAME_FIELD_HEIGHT)
                 Jump();
         }
 
